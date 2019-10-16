@@ -14,6 +14,9 @@ class App extends React.Component {
 	inputs = [];
 	
 	registerInput = (input, x, y) => {
+		if (!this.inputs[x]) {
+			this.inputs[x] = [];
+		}
 		this.inputs[x][y] = input;
 	}
 	
@@ -137,7 +140,6 @@ class App extends React.Component {
 				if (this.state.matrix[i][j] === null) {
 					result = false;
 				}
-				;
 			}
 		}
 		return result;
@@ -198,7 +200,7 @@ class App extends React.Component {
 			<p class="end-game" id="draw">Ничья, пидор!</p>
 			
 			<div class="button-container">
-				<button onclick="game.restart()">New game, pidor</button>
+				<button onClick={() => this.restart()}>New game, pidor</button>
 			</div>
 		</div>
 	}
